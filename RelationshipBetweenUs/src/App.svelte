@@ -6,14 +6,46 @@
 		{id: 3, text: "3"}
 	];
 
-	let selected = {id: null, text: null};
+	let selectedDepth = {id: null, text: null};
+	//$: console.log(selectedDepth.id);
 
-	//$: console.log(selected);
+	let relationship = [
+		{id: 0, text: "父"},
+		{id: 1, text: "母"},
+		{id: 2, text: "兄"},
+		{id: 3, text: "姉"},
+		{id: 4, text: "弟"},
+		{id: 5, text: "妹"},
+		{id: 6, text: "息子"},
+		{id: 7, text: "娘"},
+		{id: 8, text: "配偶者"}
+	]
 
-	let text = "あなた";
+	let selectedRelationship = [
+		{id: null, text: null},
+		{id: null, text: null},
+		{id: null, text: null}
+	];
+
+	//$: console.log(selectedRelationship);
+	let allSelected = false;
+
+	$: if(selectedDepth.id === 0) allSelected = true;
+
+	$: for(let i = 0; i < selectedDepth.id; i++){
+		allSelected = true;
+
+		if(selectedRelationship[i].id === null){
+			allSelected = false;
+			break;
+		}
+	}
+	//$: console.log(allSelected);
 
 	let showResult = false;
 	const seeResult = () => showResult = true;
+
+	let text = "";
 
 	function handleReload(){
 
@@ -29,7 +61,7 @@
 			<h2>
 				関係の深さ
 
-				<select bind:value={selected}>
+				<select bind:value={selectedDepth}>
 					{#each depth as depth}
 						<option value={depth}>
 							{depth.text}
@@ -40,28 +72,40 @@
 		{/if}
 
 		<h3>
-			{#if selected.id === null}
+			{#if selectedDepth.id === null}
 				<div></div>
-			{:else if selected.id === 0}
-				{text}は
-			{:else}
-				{text}の
+			{:else if selectedDepth.id === 0}
+				あなたは
+			{:else if selectedDepth.id === 1}
+				あなたの
+
+				<select bind:value={selectedRelationship[0]}>
+					{#each relationship as r}
+						<option value={r}>
+							{r.text}
+						</option>
+					{/each}
+				</select>
+
+				は
 			{/if}
 		</h3>
 	</div>
 
-	{#if !showResult}
-		{#if selected.id === 0}
-			<div class="middlePart">
-				<button on:click={seeResult}>結果を見る</button>
-			</div>
-		{/if}
+	{#if !showResult && allSelected}
+		<div class="middlePart">
+			<button on:click={seeResult}>結果を見る</button>
+		</div>
 	{/if}
 
 
 	{#if showResult}
 		<div class="lowerPart">
-			<h2>{text}です。</h2>
+			{#if selectedDepth.id === 0}
+				<h2>あなたです。</h2>
+			{:else}
+				<h2>あなたの{selectedRelationship[0].text}です。</h2>
+			{/if}
 		</div>
 
 		<div class="bottomPart">
