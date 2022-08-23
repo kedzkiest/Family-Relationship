@@ -88,6 +88,60 @@
 				</select>
 
 				は
+			{:else if selectedDepth.id === 2}
+				あなたの
+
+				<select bind:value={selectedRelationship[0]}>
+					{#each relationship as r}
+						<option value={r}>
+							{r.text}
+						</option>
+					{/each}
+				</select>
+
+				の
+
+				<select bind:value={selectedRelationship[1]}>
+					{#each relationship as r}
+						<option value={r}>
+							{r.text}
+						</option>
+					{/each}
+				</select>
+
+				は
+			{:else if selectedDepth.id === 3}
+				あなたの
+
+				<select bind:value={selectedRelationship[0]}>
+					{#each relationship as r}
+						<option value={r}>
+							{r.text}
+						</option>
+					{/each}
+				</select>
+
+				の
+
+				<select bind:value={selectedRelationship[1]}>
+					{#each relationship as r}
+						<option value={r}>
+							{r.text}
+						</option>
+					{/each}
+				</select>
+
+				の
+
+				<select bind:value={selectedRelationship[2]}>
+					{#each relationship as r}
+						<option value={r}>
+							{r.text}
+						</option>
+					{/each}
+				</select>
+
+				は
 			{/if}
 		</h3>
 	</div>
@@ -103,8 +157,12 @@
 		<div class="lowerPart">
 			{#if selectedDepth.id === 0}
 				<h2>あなたです。</h2>
-			{:else}
+			{:else if selectedDepth.id === 1}
 				<h2>あなたの{selectedRelationship[0].text}です。</h2>
+			{:else if selectedDepth.id === 2}
+				<h2>あなたの{selectedRelationship[0].text}の{selectedRelationship[1].text}です。</h2>
+			{:else if selectedDepth.id === 3}
+				<h2>あなたの{selectedRelationship[0].text}の{selectedRelationship[1].text}の{selectedRelationship[2].text}です。</h2>
 			{/if}
 		</div>
 
