@@ -37,12 +37,6 @@
 					{/each}
 				</select>
 			</h2>
-
-			{#if selected.id === 0}
-				<div class="middlePart">
-					<button on:click={seeResult}>結果を見る</button>
-				</div>
-			{/if}
 		{/if}
 
 		<h3>
@@ -55,6 +49,14 @@
 			{/if}
 		</h3>
 	</div>
+
+	{#if !showResult}
+		{#if selected.id === 0}
+			<div class="middlePart">
+				<button on:click={seeResult}>結果を見る</button>
+			</div>
+		{/if}
+	{/if}
 
 
 	{#if showResult}
