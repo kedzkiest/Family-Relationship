@@ -519,6 +519,11 @@
 			</form>
 		</div>
 	{/if}
+
+	<h4>参考にしたサイト<br>
+	<a href="https://sbfl.net/blog/2019/12/04/svelte-frontend-1/?utm_source=pocket_mylist">Svelteで始める頑張らないフロントエンド生活 前編</a><br>
+	<a href="https://uguisu.skr.jp/history/sofu.html">自分から見た親族の呼び方の全まとめ</a><br>
+	<a href="https://famico.jp/">famicoの「〇〇とはどんな意味？行政書士が家系図で解決！」シリーズ</a></h4>
 </main>
 
 <style>
