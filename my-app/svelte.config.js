@@ -6,7 +6,7 @@ const dev = process.env.NODE_ENV === 'development';
 const config = {
 	kit: {
 		paths: {
-			base: dev ? '' : '/Family_Relationship_Deploy',
+			base: dev ? '' : '/Family-Relationship',
 		},
 		adapter: adapter({
 			pages: 'build',
