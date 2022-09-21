@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
 	let depth = [
 		{id: 0, text: "0"},
 		{id: 1, text: "1"},
@@ -21,8 +23,8 @@
 	]
 
 	let selectedRelationship = [
-		{id: null, text: null},
-		{id: null, text: null},
+		{id: -1, text: null},
+		{id: -1, text: null},
 	];
 
 	// #region judgeRelation
@@ -399,7 +401,8 @@
 
 	$: if(selectedDepth.id === 0) allSelected = true;
 
-	$: for(let i = 0; i < selectedDepth.id; i++){
+// @ts-ignore
+		$: for(let i = 0; i < selectedDepth.id; i++){
 		allSelected = true;
 
 		if(selectedRelationship[i].id === null){
@@ -514,7 +517,7 @@
 		</div>
 
 		<div class="bottomPart">
-			<form on:reload={handleReload}>
+			  <form on:reload={handleReload}>
 				<button type="reload">もう一度診断する</button>
 			</form>
 		</div>
