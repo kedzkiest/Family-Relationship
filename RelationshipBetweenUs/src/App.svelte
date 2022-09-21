@@ -438,47 +438,61 @@
 			</h2>
 		{/if}
 
-		<h3>
-			{#if selectedDepth.id === null}
-				<div></div>
-			{:else if selectedDepth.id === 0}
-				あなたは
-			{:else if selectedDepth.id === 1}
-				あなたの
+		{#if !showResult}
+			<h3>
+				{#if selectedDepth.id === null}
+					<div></div>
+				{:else if selectedDepth.id === 0}
+					あなたは
+				{:else if selectedDepth.id === 1}
+					あなたの
 
-				<select bind:value={selectedRelationship[0]}>
-					{#each relationship as r}
-						<option value={r}>
-							{r.text}
-						</option>
-					{/each}
-				</select>
+					<select bind:value={selectedRelationship[0]}>
+						{#each relationship as r}
+							<option value={r}>
+								{r.text}
+							</option>
+						{/each}
+					</select>
 
-				は
-			{:else if selectedDepth.id === 2}
-				あなたの
+					は
+				{:else if selectedDepth.id === 2}
+					あなたの
 
-				<select bind:value={selectedRelationship[0]}>
-					{#each relationship as r}
-						<option value={r}>
-							{r.text}
-						</option>
-					{/each}
-				</select>
+					<select bind:value={selectedRelationship[0]}>
+						{#each relationship as r}
+							<option value={r}>
+								{r.text}
+							</option>
+						{/each}
+					</select>
 
-				の
+					の
 
-				<select bind:value={selectedRelationship[1]}>
-					{#each relationship as r}
-						<option value={r}>
-							{r.text}
-						</option>
-					{/each}
-				</select>
+					<select bind:value={selectedRelationship[1]}>
+						{#each relationship as r}
+							<option value={r}>
+								{r.text}
+							</option>
+						{/each}
+					</select>
 
-				は
-			{/if}
-		</h3>
+					は
+				{/if}
+			</h3>
+		{:else}
+			<h3>
+				{#if selectedDepth.id === null}
+					<div></div>
+				{:else if selectedDepth.id === 0}
+					あなたは
+				{:else if selectedDepth.id === 1}
+					あなたの{selectedRelationship[0].text}は
+				{:else if selectedDepth.id === 2}
+					あなたの{selectedRelationship[0].text}の{selectedRelationship[1].text}は
+				{/if}
+			</h3>
+		{/if}
 	</div>
 
 	{#if !showResult && allSelected}
