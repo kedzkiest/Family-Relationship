@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -6,8 +6,8 @@ const config = {
 		adapter: adapter()
 	},
 	paths: {
-		base: 'Family_Relationship',
-		assets: '/Family_Relationship'
+		base: '/Family_Relationship/',
+		assets: '/Family_Relationship/'
 	}
 };
 

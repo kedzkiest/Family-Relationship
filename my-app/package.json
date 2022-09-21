@@ -3,9 +3,10 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "rm -rf build && svelte-kit build && touch .svelte-kit/static/build/.nojekyll",
+		"build": "vite build",
 		"preview": "vite preview",
-		"deploy": "npm run build && npx gh-pages -d .svelte-kit/static/build -t true"
+		"deploy": "npx gh-pages -d build",
+		"adapt": "svelte-kit adapt"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
