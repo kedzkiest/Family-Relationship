@@ -422,7 +422,7 @@
 <main>
 	
 	<div class="upperPart">
-		<h1>あなたの親族の続柄</h1>
+		<h1>あなたと親族の関係性</h1>
 
 		{#if !showResult}
 			<h2>
